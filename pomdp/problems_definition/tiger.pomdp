@@ -10,39 +10,39 @@ observations: tiger-left tiger-right
 
 start: 0.5 0.5
 
-T:listen : tiger-left : tiger-left 1
-T:listen : tiger-right : tiger-right 1
+T : listen : tiger-left : tiger-left 1
+T : listen : tiger-right : tiger-right 1 
 
 
-T:open-left : tiger-left : tiger-left 0.5
-T:open-left : tiger-left : tiger-right 0.5
-T:open-left : tiger-right : tiger-left 0.5
-T:open-left : tiger-right : tiger-right 0.5
+T : open-left : tiger-left : tiger-left 0.5
+T : open-left : tiger-left : tiger-right 0.5
+T : open-left : tiger-right : tiger-left 0.5
+T : open-left : tiger-right : tiger-right 0.5
 
-T:open-right : tiger-left : tiger-left 0.5
-T:open-right : tiger-left : tiger-right 0.5
-T:open-right : tiger-right : tiger-left 0.5
-T:open-right : tiger-right : tiger-right 0.5
+T : open-right : tiger-left : tiger-left 0.5
+T : open-right : tiger-left : tiger-right 0.5
+T : open-right : tiger-right : tiger-left 0.5
+T : open-right : tiger-right : tiger-right 0.5
 
-O:listen
+O : listen
 0.85 0.15
 0.15 0.85
 
-O:open-left
+O : open-left
 0.5 0.5
 0.5 0.5
 
-O:open-right
+O : open-right
 0.5 0.5
 0.5 0.5
 
-R:listen : * : * : * -1
+R : listen : * : * : * -1
 
-R:open-left : tiger-left : * : * -100
+R : open-left : tiger-left : * : * -100
 
-R:open-left : tiger-right : * : * 10
+R : open-left : tiger-right : * : * 10
 
-R:open-right : tiger-left : * : * 10 
+R : open-right : tiger-left : * : * 10 
 
-R:open-right : tiger-right : * : * -100
+R : open-right : tiger-right : * : * -100
 

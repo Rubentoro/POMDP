@@ -30,5 +30,7 @@ if __name__ == '__main__':
 
     with open(params.algo_config) as algo_config:
         algo_params = json.load(algo_config)
+        print("------------" + str(algo_params) + "-------------------")
+        print("------------" + str(params.budget) + "-------------------")
         runner = PomdpRunner(params)
         runner.run(**algo_params)
