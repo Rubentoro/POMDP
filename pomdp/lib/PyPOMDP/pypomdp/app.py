@@ -1,43 +1,36 @@
 import os
 import re
 import random
+import json
 from models import RockSampleModel, Model
 from solvers import POMCP, PBVI
 from parsers import PomdpParser, GraphViz
 from logger import Logger as log
+from pomdp_runner import PomdpRunner
+from util.runner_params import RunnerParams
 
 config_file = "pomdp/problems_definition/" # Config_file base path
 
 class App:
 
-    def get_config_file(problem):
-        if(problem=="tiger"):
-            return config_file+"tiger.pomdp"
-        if(problem=="tag"):
-            return config_file+"tag.pomdp"
 
-    config_file = get_config_file("tag")
 
-    POMDP= PomdpParser(config_file)
-    POMDP.__enter__()
+    env="tag.pomdp"
+    logfile=None
+    config="pomcp"
+    budget=10
+    max_play=10
+    snapshot=None
+    random_prior=None
 
-    def set_initial_state(POMDP):
-        states = POMDP.states
-        rand = random.randint(0, len(states)-1)
-        print(str(rand))
-        POMDP.init_state = states[rand]
-        print("Initial state: "+str(POMDP.init_state))
+    params = RunnerParams("tag.pomdp", None, "pomcp", 1, 10, None, None)
 
-    def stop_condition(POMDP):
-            config_base_path = "pomdp/problems_definition/"
-            global config_file
-            if(config_file == config_base_path+"tag.pomdp"):
-                pattern = re.compile("^.*(tagged)$")
-                return pattern.match(str(POMDP.init_state)) 
-            else:
-                return False
+    with open(params.algo_config) as algo_config:
+        algo_params = json.load(algo_config)
+        print("------------" + str(algo_params) + "-------------------")
+        runner = PomdpRunner(params)
+        all_actions, all_TotalRewards= runner.run(**algo_params)
+        print(str(all_actions))
+        print(str(all_TotalRewards))
 
-    # Initial state is set. Then we check if the random-set initial state is a stop condition, if so, we generate a new one.
-    set_initial_state(POMDP)
-    if(stop_condition(POMDP)):
-        set_initial_state(POMDP)
+

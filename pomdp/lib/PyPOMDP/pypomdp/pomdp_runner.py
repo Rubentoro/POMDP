@@ -1,4 +1,5 @@
 import os
+import re
 
 from models import RockSampleModel, Model
 from solvers import POMCP, PBVI
@@ -41,6 +42,7 @@ class PomdpRunner:
         visualiser.render('./dev/snapshots/{}'.format(filename))  # TODO: parametrise the dev folder path
 
     def run(self, algo, T, **kwargs):
+        
         visualiser = GraphViz(description='tmp')
         params, pomdp = self.params, None
         total_rewards, budget = 0, params.budget
@@ -69,11 +71,25 @@ class PomdpRunner:
             Time Horizon: {}
             Max Play: {}
         ++++++++++++++++++++++'''.format(model.curr_state, budget, belief, T, params.max_play))
-
-        for i in range(params.max_play):
+        
+        all_actions = list()
+        all_TotalRewards= list()
+        
+        def stop_condition(state):
+               
+                pattern = re.compile("^.*(tagged)$")
+                return pattern.match(state) 
+            
+        i=0
+        while not stop_condition(model.curr_state):
+           
             # plan, take action and receive environment feedbacks
             pomdp.solve(T)
             action = pomdp.get_action(belief)
+
+            # Add action of iteration to a list 
+            all_actions.append(action)
+
             new_state, obs, reward, cost = pomdp.take_action(action)
 
             if params.snapshot and isinstance(pomdp, POMCP):
@@ -82,23 +98,28 @@ class PomdpRunner:
             
             # update states
             belief = pomdp.update_belief(belief, action, obs)
+            # Add total reward of iteration to a list 
             total_rewards += reward
+
+            all_TotalRewards.append(float(total_rewards))
             budget -= cost
 
             # print ino
             log.info('\n'.join([
-              'Taking action: {}'.format(action),
-              'Observation: {}'.format(obs),
-              'Reward: {}'.format(reward),
-              'Budget: {}'.format(budget),
-              'New state: {}'.format(new_state),
-              'New Belief: {}'.format(belief),
-              '=' * 20
+            'Taking action: {}'.format(action),
+            'Observation: {}'.format(obs),
+            'Reward: {}'.format(reward),
+            'Budget: {}'.format(budget),
+            'New state: {}'.format(new_state),
+            'New Belief: {}'.format(belief),
+            '=' * 20
             ]))
 
             if budget <= 0:
                 log.info('Budget spent.')
+            i+1
 
 
         log.info('{} games played. Toal reward = {}'.format(i + 1, total_rewards))
-        return pomdp
+        return all_actions, all_TotalRewards
+
