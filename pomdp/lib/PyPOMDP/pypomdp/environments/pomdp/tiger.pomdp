@@ -1,48 +1,47 @@
-# This file was downloaded from http://www.pomdp.org/examples/
 # This is the tiger problem of AAAI paper fame in the new pomdp
 # format.  This format is still experimental and subject to change
 
 discount: 0.75
 values: reward
-states: tiger-left tiger-right 
-actions: listen open-left open-right
+states: tiger-left tiger-right
+actions: listen-left listen-right open-left open-right
+costs: 1 1 1 1
 observations: tiger-left tiger-right
 
-start: 0.5 0.5
+T: listen-left
+identity
 
-T : listen : tiger-left : tiger-left 1
-T : listen : tiger-right : tiger-right 1 
+T: listen-right
+identity
 
+T: open-left
+uniform
 
-T : open-left : tiger-left : tiger-left 0.5
-T : open-left : tiger-left : tiger-right 0.5
-T : open-left : tiger-right : tiger-left 0.5
-T : open-left : tiger-right : tiger-right 0.5
+T: open-right
+uniform
 
-T : open-right : tiger-left : tiger-left 0.5
-T : open-right : tiger-left : tiger-right 0.5
-T : open-right : tiger-right : tiger-left 0.5
-T : open-right : tiger-right : tiger-right 0.5
-
-O : listen
+O: listen-left
 0.85 0.15
 0.15 0.85
 
-O : open-left
-0.5 0.5
-0.5 0.5
+O: listen-right
+0.15 0.85
+0.85 0.15
 
-O : open-right
-0.5 0.5
-0.5 0.5
+O: open-left
+uniform
 
-R : listen : * : * : * -1
+O: open-right
+uniform
 
-R : open-left : tiger-left : * : * -100
+R: listen-left : tiger-left : * : * -1
+R: listen-left : tiger-right : * : * -1
 
-R : open-left : tiger-right : * : * 10
+R: listen-right : tiger-left : * : * -1
+R: listen-right : tiger-right : * : * -1
 
-R : open-right : tiger-left : * : * 10 
+R: open-left : tiger-left : * : * -100
+R: open-left : tiger-right : * : * 10
 
-R : open-right : tiger-right : * : * -100
-
+R: open-right : tiger-right : * : * -100
+R: open-right : tiger-left : * : * 10 

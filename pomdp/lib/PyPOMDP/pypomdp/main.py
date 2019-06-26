@@ -33,4 +33,4 @@ if __name__ == '__main__':
         print("------------" + str(algo_params) + "-------------------")
         print("------------" + str(params.budget) + "-------------------")
         runner = PomdpRunner(params)
-        runner.run(**algo_params)
+        runner.runTiger(**algo_params)
