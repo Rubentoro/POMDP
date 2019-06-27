@@ -1,10 +1,10 @@
 import os
 import re
 
-from models import SampleModel, Model
-from solvers import POMCP, PBVI
-from parsers import PomdpParser, GraphViz
-from logger import Logger as log
+from .models import SampleModel, Model
+from .solvers import POMCP, PBVI
+from .parsers import PomdpParser, GraphViz
+from .logger import Logger as log
 
 class PomdpRunner:
 

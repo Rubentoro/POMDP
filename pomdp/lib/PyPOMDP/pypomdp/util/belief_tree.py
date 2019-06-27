@@ -1,5 +1,5 @@
 
-from util.helper import rand_choice, round
+from .helper import rand_choice, round
 from abc import abstractmethod
 
 class Node(object):
