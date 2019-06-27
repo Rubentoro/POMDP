@@ -147,7 +147,7 @@ class POMCP(Solver):
             n += 1
             state = self.tree.root.sample_state()
             self.simulate(state, max_depth=T, h=self.tree.root.h, budget=self.tree.root.budget)
-        log.info('# Simulation = {}'.format(n))
+        #log.info('# Simulation = {}'.format(n))
 
     def get_action(self, belief):
         """
@@ -217,7 +217,7 @@ class POMCP(Solver):
 
             # re-compute the current belief distribution after reinvigoration
             new_belief =  self.compute_belief()
-            log.info(('*** {} random particles are added ***'.format(len(mutations))))
+            #log.info(('*** {} random particles are added ***'.format(len(mutations))))
         return new_belief
 
     def draw(self, beliefs):
