@@ -121,7 +121,9 @@ class PomdpRunner:
                 break
             i=i+1
 
-
+            # If params.max_play == 0 then, it means that max_play is unlimited 
+            if params.max_play!=0 and i>params.max_play:
+                break
         log.info('{} games played. Total reward = {}'.format(i, total_rewards))
         return all_actions, all_TotalRewards, all_rewards
 
@@ -191,6 +193,9 @@ class PomdpRunner:
                 break
             i=i+1
 
+            # If params.max_play == 0 then, it means that max_play is unlimited 
+            if params.max_play!=0 and i>params.max_play:
+                break
         # print ino
         log.info('\n'.join([
         'Reward: {}'.format(reward),
@@ -356,7 +361,12 @@ class PomdpRunner:
                 break
             i=i+1
            
-            if  str(action) == "open-left" or str(action) == "open-right":
+            stop_condition = str(action) == "open-left" or str(action) == "open-right"
+            if stop_condition:
+                break
+
+            # If params.max_play == 0 then, it means that max_play is unlimited 
+            if params.max_play!=0 and i>params.max_play:
                 break
 
 
@@ -602,6 +612,10 @@ class PomdpRunner:
 
             if  stop_condition:
                 break
+
+            # If params.max_play == 0 then, it means that max_play is unlimited 
+            if params.max_play!=0 and i>params.max_play:
+                break
         log.info('{} games played. Total reward = {}'.format(i, total_rewards))
         return all_actions, all_TotalRewards, all_rewards
 
@@ -676,6 +690,10 @@ class PomdpRunner:
             stop_condition = paint_visual in all_actions and paint_strength in all_actions and repair_ut_inspect in all_actions
 
             if  stop_condition:
+                break
+
+            # If params.max_play == 0 then, it means that max_play is unlimited 
+            if params.max_play!=0 and i>params.max_play:
                 break
         # print ino
         log.info('\n'.join([
@@ -858,6 +876,10 @@ class PomdpRunner:
             if  stop_condition:
                 break
 
+            # If params.max_play == 0 then, it means that max_play is unlimited 
+            if params.max_play!=0 and i>params.max_play:
+                break
+
 
         log.info('{} games played. Total reward = {}'.format(i, total_rewards))
         return all_actions, all_TotalRewards, all_rewards
@@ -925,12 +947,15 @@ class PomdpRunner:
             if budget <= 0:
                 log.info('Budget spent.')
                 break
-
             i=i+1
              
             stop_condition = str(action) == "choose-mid" or str(action) == "choose-right" or str(action) == "choose-left"
 
             if  stop_condition:
+                break
+
+            # If params.max_play == 0 then, it means that max_play is unlimited 
+            if params.max_play!=0 and i>params.max_play:
                 break
 
         # print ino

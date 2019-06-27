@@ -149,15 +149,15 @@ class App:
     
 
 
-#App().run_tag(None, "pomcp", 10, 10, None, None, "benchmark")
+#App().run_tag(None, "pomcp", 1000000, 0, None, None, "interactive")
 #App().run_tag(None, "pbvi", 10, 10, None, None, "benchmark")
 
 
-#App().run_tiger(None, "pomcp", 10, 10, None, None, "benchmark")
+#App().run_tiger(None, "pomcp", 10, 10, None, None, "interactive")
 #App().run_tiger(None, "pbvi", 1, 10, None, None, "benchmark")
 
-#App().run_bridge_repair(None, "pomcp", 10, 10, None, None, "benchmark")
+#App().run_bridge_repair(None, "pomcp", 100000, 2, None, None, "silent")
 #App().run_bridge_repair(None, "pbvi", 10, 10, None, None, "benchmark")
 
-#App().run_car(None, "pomcp", 10, 10, None, None, "benchmark")
+#App().run_car(None, "pomcp", 100, 2, None, None, "silent")
 #App().run_car(None, "pbvi", 10, 10, None, None, "benchmark")
