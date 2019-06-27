@@ -1,7 +1,7 @@
 import numpy as np
 
-from solvers import Solver
-from util.alpha_vector import AlphaVector
+from .solver import Solver
+from ..util.alpha_vector import AlphaVector
 from array import array
 
 MIN = -np.inf

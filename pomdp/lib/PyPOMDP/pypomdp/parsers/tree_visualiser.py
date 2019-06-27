@@ -1,7 +1,7 @@
 import json
 import graphviz
 from abc import abstractmethod
-from util.belief_tree import Node, ActionNode, BeliefNode
+from ..util.belief_tree import Node, ActionNode, BeliefNode
 
 class TreeVisualiser(object):
 

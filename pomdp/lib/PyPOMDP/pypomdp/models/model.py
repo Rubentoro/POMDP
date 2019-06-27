@@ -1,6 +1,6 @@
 
 from abc import abstractmethod
-from util import draw_arg
+from ..util import draw_arg
 import numpy as np
 
 

@@ -5,7 +5,7 @@
 
 from copy import deepcopy
 from numpy import *
-from util.helper import gen_distribution
+from ..util.helper import gen_distribution
 from numpy import random
 import os
 import itertools
