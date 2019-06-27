@@ -121,8 +121,8 @@ class Runner:
                 break
             i=i+1
 
-            # If params.max_play == 0 then, it means that max_play is unlimited 
-            if params.max_play!=0 and i>params.max_play:
+            # If params.max_play <= 0 then, it means that max_play is unlimited 
+            if params.max_play>0 and i>=params.max_play:
                 break
         log.info('{} games played. Total reward = {}'.format(i, total_rewards))
         return all_actions, all_TotalRewards, all_rewards
@@ -193,8 +193,8 @@ class Runner:
                 break
             i=i+1
 
-            # If params.max_play == 0 then, it means that max_play is unlimited 
-            if params.max_play!=0 and i>params.max_play:
+            # If params.max_play <= 0 then, it means that max_play is unlimited 
+            if params.max_play>0 and i>=params.max_play:
                 break
         # print ino
         log.info('\n'.join([
@@ -365,8 +365,8 @@ class Runner:
             if stop_condition:
                 break
 
-            # If params.max_play == 0 then, it means that max_play is unlimited 
-            if params.max_play!=0 and i>params.max_play:
+            # If params.max_play <= 0 then, it means that max_play is unlimited 
+            if params.max_play>0 and i>=params.max_play:
                 break
 
 
@@ -613,8 +613,8 @@ class Runner:
             if  stop_condition:
                 break
 
-            # If params.max_play == 0 then, it means that max_play is unlimited 
-            if params.max_play!=0 and i>params.max_play:
+            # If params.max_play <= 0 then, it means that max_play is unlimited 
+            if params.max_play>0 and i>=params.max_play:
                 break
         log.info('{} games played. Total reward = {}'.format(i, total_rewards))
         return all_actions, all_TotalRewards, all_rewards
@@ -692,8 +692,8 @@ class Runner:
             if  stop_condition:
                 break
 
-            # If params.max_play == 0 then, it means that max_play is unlimited 
-            if params.max_play!=0 and i>params.max_play:
+            # If params.max_play <= 0 then, it means that max_play is unlimited 
+            if params.max_play>0 and i>=params.max_play:
                 break
         # print ino
         log.info('\n'.join([
@@ -876,8 +876,8 @@ class Runner:
             if  stop_condition:
                 break
 
-            # If params.max_play == 0 then, it means that max_play is unlimited 
-            if params.max_play!=0 and i>params.max_play:
+            # If params.max_play <= 0 then, it means that max_play is unlimited 
+            if params.max_play>0 and i>=params.max_play:
                 break
 
 
@@ -954,8 +954,8 @@ class Runner:
             if  stop_condition:
                 break
 
-            # If params.max_play == 0 then, it means that max_play is unlimited 
-            if params.max_play!=0 and i>params.max_play:
+            # If params.max_play <= 0 then, it means that max_play is unlimited 
+            if params.max_play>0 and i>=params.max_play:
                 break
 
         # print ino
