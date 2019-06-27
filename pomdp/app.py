@@ -4,16 +4,19 @@ import random
 import json
 import warnings
 import math
-from models import SampleModel, Model
-from solvers import POMCP, PBVI
-from parsers import PomdpParser, GraphViz
-from logger import Logger as log
-from pomdp_runner import PomdpRunner
-from util.runner_params import RunnerParams
+from runner import Runner
+from lib.PyPOMDP.pypomdp import *
+from lib.PyPOMDP.pypomdp.models import *
+from lib.PyPOMDP.pypomdp.util import *
+from lib.PyPOMDP.pypomdp.models import SampleModel, Model
+from lib.PyPOMDP.pypomdp.solvers import POMCP, PBVI
+from lib.PyPOMDP.pypomdp.parsers import PomdpParser, GraphViz
+from lib.PyPOMDP.pypomdp.logger import Logger as log
+from lib.PyPOMDP.pypomdp.util.runner_params import RunnerParams
 
 warnings.filterwarnings("ignore") # Ignore numba related warnings
 
-config_file = "pomdp/problems_definition/" # Config_file base path
+config_file = "./problems_definition/" # Config_file base path
 
 class App:
 
@@ -46,7 +49,7 @@ class App:
         with open(params.algo_config) as algo_config:
             algo_params = json.load(algo_config)
             print("------------" + str(algo_params) + "-------------------")
-            runner = PomdpRunner(params)
+            runner = Runner(params)
             all_actions = list()
             all_total_rewards = list()
             if str(mode)=="interactive":
@@ -73,7 +76,7 @@ class App:
         with open(params.algo_config) as algo_config:
             algo_params = json.load(algo_config)
             print("------------" + str(algo_params) + "-------------------")
-            runner = PomdpRunner(params)
+            runner = Runner(params)
             all_actions = list()
             all_total_rewards = list()
             if str(mode)=="interactive":
@@ -100,7 +103,7 @@ class App:
         with open(params.algo_config) as algo_config:
             algo_params = json.load(algo_config)
             print("------------" + str(algo_params) + "-------------------")
-            runner = PomdpRunner(params)
+            runner = Runner(params)
             all_actions = list()
             all_total_rewards = list()
             if str(mode)=="interactive":
@@ -128,7 +131,7 @@ class App:
         with open(params.algo_config) as algo_config:
             algo_params = json.load(algo_config)
             print("------------" + str(algo_params) + "-------------------")
-            runner = PomdpRunner(params)
+            runner = Runner(params)
             all_actions = list()
             all_total_rewards = list()
             if str(mode)=="interactive":
@@ -153,7 +156,7 @@ class App:
 #App().run_tag(None, "pbvi", 10, 10, None, None, "benchmark")
 
 
-#App().run_tiger(None, "pomcp", 10, 10, None, None, "interactive")
+#App().run_tiger(None, "pomcp", 10, 2, None, None, "interactive")
 #App().run_tiger(None, "pbvi", 1, 10, None, None, "benchmark")
 
 #App().run_bridge_repair(None, "pomcp", 100000, 2, None, None, "silent")
