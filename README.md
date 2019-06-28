@@ -1,5 +1,7 @@
 # POMDP
 
+##### [Leer en español](README_ES.md)
+
 ## Implementation and analysis of Partially Observable Markov Decision Processes on Python.
 
 This project is made for educational purposes only in the context of the subject 'Artificial Inteligence' from Software Engineering degree of the University of Seville.
