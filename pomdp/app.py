@@ -58,7 +58,7 @@ class App:
                 all_actions, all_total_rewards, all_rewards= runner.run_tag_silent(**algo_params)
             if str(mode)=="benchmark":
                 all_actions, all_total_rewards, all_rewards, steps= runner.run_tag_benchmark(**algo_params)
-            print("\n++++++++++++++++++++\nActions taken: "+str(all_actions)+"\n++++++++++++++++++++")
+            print("\n++++++++++++++++++++\nTaken actions: "+str(all_actions)+"\n++++++++++++++++++++")
             print("\n++++++++++++++++++++\nReward update: "+str(all_total_rewards)+"\n++++++++++++++++++++")
             if str(mode)=="benchmark":
                 reward_average, reward_sd, steps_average, steps_sd = self.compute_statistics(all_actions, all_total_rewards, all_rewards, steps)
@@ -85,7 +85,7 @@ class App:
                 all_actions, all_total_rewards, all_rewards= runner.run_tiger_silent(**algo_params)
             if str(mode)=="benchmark":
                 all_actions, all_total_rewards, all_rewards, steps= runner.run_tiger_benchmark(**algo_params)
-            print("\n++++++++++++++++++++\nActions taken: "+str(all_actions)+"\n++++++++++++++++++++")
+            print("\n++++++++++++++++++++\nTaken actions: "+str(all_actions)+"\n++++++++++++++++++++")
             print("\n++++++++++++++++++++\nReward update: "+str(all_total_rewards)+"\n++++++++++++++++++++")
             if str(mode)=="benchmark":
                 reward_average, reward_sd, steps_average, steps_sd = self.compute_statistics(all_actions, all_total_rewards, all_rewards, steps)
@@ -112,7 +112,7 @@ class App:
                 all_actions, all_total_rewards, all_rewards= runner.run_bridge_silent(**algo_params)
             if str(mode)=="benchmark":
                 all_actions, all_total_rewards, all_rewards, steps= runner.run_bridge_benchmark(**algo_params)
-            print("\n++++++++++++++++++++\nActions taken: "+str(all_actions)+"\n++++++++++++++++++++")
+            print("\n++++++++++++++++++++\nTaken actions: "+str(all_actions)+"\n++++++++++++++++++++")
             print("\n++++++++++++++++++++\nReward update: "+str(all_total_rewards)+"\n++++++++++++++++++++")
             if str(mode)=="benchmark":
                 reward_average, reward_sd, steps_average, steps_sd = self.compute_statistics(all_actions, all_total_rewards, all_rewards, steps)
@@ -140,7 +140,7 @@ class App:
                 all_actions, all_total_rewards, all_rewards= runner.run_car_silent(**algo_params)
             if str(mode)=="benchmark":
                 all_actions, all_total_rewards, all_rewards, steps= runner.run_car_benchmark(**algo_params) 
-            print("\n++++++++++++++++++++\nActions taken: "+str(all_actions)+"\n++++++++++++++++++++")
+            print("\n++++++++++++++++++++\nTaken actions: "+str(all_actions)+"\n++++++++++++++++++++")
             print("\n++++++++++++++++++++\nReward update: "+str(all_total_rewards)+"\n++++++++++++++++++++")
             if str(mode)=="benchmark":
                 reward_average, reward_sd, steps_average, steps_sd = self.compute_statistics(all_actions, all_total_rewards, all_rewards, steps)

@@ -62,7 +62,6 @@ class Runner:
             elif algo == 'pomcp':
                 pomdp.add_configs(budget, belief, **kwargs)
 
-        # have fun!
         log.info('''
         ++++++++++++++++++++++
             Starting State:  {}
@@ -148,7 +147,6 @@ class Runner:
             elif algo == 'pomcp':
                 pomdp.add_configs(budget, belief, **kwargs)
 
-        # have fun!
         log.info('''
         ++++++++++++++++++++++
             Starting State:  {}
@@ -198,7 +196,7 @@ class Runner:
                 break
         # print ino
         log.info('\n'.join([
-        'Reward: {}'.format(reward),
+        'Last reward: {}'.format(reward),
         'Final state: {}'.format(new_state),
         '=' * 20
         ]))
@@ -243,6 +241,7 @@ class Runner:
             
         i=0
         for x in range(30): # 30 steps in order to get statistics
+            print("========================================")
             while not stop_condition(model.curr_state): 
             
                 # plan, take action and receive environment feedbacks
@@ -274,14 +273,16 @@ class Runner:
                 if not stop_condition(model.curr_state):
                     steps.append(i)
 
-            # print ino
+            # print info
+            print('Iteration: #'+str(x+1))
             log.info('\n'.join([
-            'Reward: {}'.format(reward),
-            'Final state: {}'.format(new_state),
-            '=' * 20
+            'Last reward: {}'.format(reward),
+            'Final state: {}'.format(new_state)
             ]))
-            log.info('{} games played. Total reward = {}'.format(i, total_rewards))
+            log.info('-- {} games played. Total reward = {}'.format(i, total_rewards))
             i = 0
+            total_rewards = 0
+            print("========================================\n")
         return all_actions, all_TotalRewards, all_rewards, steps
 
     def run_tiger_interactive(self, algo, T, **kwargs):
@@ -305,7 +306,7 @@ class Runner:
             elif algo == 'pomcp':
                 pomdp.add_configs(budget, belief, **kwargs)
 
-        # have fun!
+        
         log.info('''
         ++++++++++++++++++++++
             Starting State:  {}
@@ -440,7 +441,7 @@ class Runner:
 
         # print ino
         log.info('\n'.join([
-        'Reward: {}'.format(reward),
+        'Last reward: {}'.format(reward),
         'Final state: {}'.format(new_state),
         '=' * 20
         ]))
@@ -482,7 +483,7 @@ class Runner:
         steps = list()
         i=0
         for x in range(30): # 30 steps in order to get statistics
-            
+            print("========================================")
             while True: # 30 steps in order to get statistics
             
                 # plan, take action and receive environment feedbacks
@@ -516,15 +517,16 @@ class Runner:
                 if  str(action) == "open-left" or str(action) == "open-right":
                     steps.append(i)
                     break
-            # print ino
+            # print info
+            print('Iteration: #'+str(x+1))
             log.info('\n'.join([
-            'Reward: {}'.format(reward),
-            'Final state: {}'.format(new_state),
-            '=' * 20
+            'Last reward: {}'.format(reward),
+            'Final state: {}'.format(new_state)
             ]))
-            log.info('{} games played. Total reward = {}'.format(i, total_rewards))
+            log.info('-- {} games played. Total reward = {}'.format(i, total_rewards))
             i = 0
-
+            total_rewards = 0
+            print("========================================\n")
         return all_actions, all_TotalRewards, all_rewards, steps
 
 
@@ -549,7 +551,7 @@ class Runner:
             elif algo == 'pomcp':
                 pomdp.add_configs(budget, belief, **kwargs)
 
-        # have fun!
+        
         log.info('''
         ++++++++++++++++++++++
             Starting State:  {}
@@ -641,7 +643,7 @@ class Runner:
             elif algo == 'pomcp':
                 pomdp.add_configs(budget, belief, **kwargs)
 
-        # have fun!
+        
         log.info('''
         ++++++++++++++++++++++
             Starting State:  {}
@@ -697,7 +699,7 @@ class Runner:
                 break
         # print ino
         log.info('\n'.join([
-        'Reward: {}'.format(reward),
+        'Last reward: {}'.format(reward),
         'Final state: {}'.format(new_state),
         '=' * 20
         ]))
@@ -726,7 +728,7 @@ class Runner:
             elif algo == 'pomcp':
                 pomdp.add_configs(budget, belief, **kwargs)
 
-        # have fun!
+        
         log.info('''
         ++++++++++++++++++++++
             Starting State:  {}
@@ -741,7 +743,7 @@ class Runner:
 
         i=0
         for x in range(30): # 30 steps in order to get statistics
-
+            print("========================================")
             while True:
             
                 # plan, take action and receive environment feedbacks
@@ -781,14 +783,16 @@ class Runner:
                     steps.append(i)
                     break
                 
-            # print ino
+            # print info
+            print('Iteration: #'+str(x+1))
             log.info('\n'.join([
-            'Reward: {}'.format(reward),
-            'Final state: {}'.format(new_state),
-            '=' * 20
+            'Last reward: {}'.format(reward),
+            'Final state: {}'.format(new_state)
             ]))
-            log.info('{} games played. Total reward = {}'.format(i, total_rewards))
+            log.info('-- {} games played. Total reward = {}'.format(i, total_rewards))
             i = 0
+            total_rewards = 0
+            print("========================================\n")
         return all_actions, all_TotalRewards, all_rewards, steps
 
 
@@ -814,7 +818,7 @@ class Runner:
             elif algo == 'pomcp':
                 pomdp.add_configs(budget, belief, **kwargs)
 
-        # have fun!
+        
         log.info('''
         ++++++++++++++++++++++
             Starting State:  {}
@@ -905,7 +909,7 @@ class Runner:
             elif algo == 'pomcp':
                 pomdp.add_configs(budget, belief, **kwargs)
 
-        # have fun!
+        
         log.info('''
         ++++++++++++++++++++++
             Starting State:  {}
@@ -960,7 +964,7 @@ class Runner:
 
         # print ino
         log.info('\n'.join([
-        'Reward: {}'.format(reward),
+        'Last reward: {}'.format(reward),
         'Final state: {}'.format(new_state),
         '=' * 20
         ]))
@@ -988,7 +992,7 @@ class Runner:
             elif algo == 'pomcp':
                 pomdp.add_configs(budget, belief, **kwargs)
 
-        # have fun!
+        
         log.info('''
         ++++++++++++++++++++++
             Starting State:  {}
@@ -1004,7 +1008,7 @@ class Runner:
       
         i=0
         for x in range(30): # 30 steps in order to get statistics
-
+            print("========================================")
             while True:
             
                 # plan, take action and receive environment feedbacks
@@ -1041,12 +1045,14 @@ class Runner:
                     steps.append(i)
                     break
             
-            # print ino
+            # print info
+            print('Iteration: #'+str(x+1))
             log.info('\n'.join([
-            'Reward: {}'.format(reward),
-            'Final state: {}'.format(new_state),
-            '=' * 20
+            'Last reward: {}'.format(reward),
+            'Final state: {}'.format(new_state)
             ]))
-            log.info('{} games played. Total reward = {}'.format(i, total_rewards))
+            log.info('-- {} games played. Total reward = {}'.format(i, total_rewards))
             i = 0
+            total_rewards = 0
+            print("========================================\n")
         return all_actions, all_TotalRewards, all_rewards, steps
