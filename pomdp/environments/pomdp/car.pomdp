@@ -1,0 +1,86 @@
+# Three streets with only one lane and without any signal. You have to choose one of them.
+# If a car is running over the chosen one, the car crashs you.
+
+discount: 0.75
+values: reward
+states: car-left car-mid car-right
+actions: listen-left-street listen-mid-street listen-right-street choose-left choose-mid choose-right halt
+costs: 1 1 1 1 1 1 0.25
+observations: car-left car-mid car-right
+
+T: listen-left-street
+identity
+
+T: listen-mid-street
+identity
+
+T: listen-right-street
+identity
+
+T: halt
+uniform
+
+T: choose-left
+uniform
+
+T: choose-mid
+uniform
+
+T: choose-right
+uniform
+
+O: listen-left-street
+0.85 0.1 0.05
+0.25 0.65 0.1
+0.1 0.35 0.55
+
+O: listen-mid-street
+0.65 0.25 0.1
+0.075 0.85 0.075
+0.1 0.25 0.65
+
+O: listen-right-street
+0.55 0.35 0.1
+0.1 0.65 0.25
+0.05 0.1 0.85
+
+O: choose-left
+uniform
+
+O: choose-mid
+uniform
+
+O: choose-right
+uniform
+
+O: halt
+uniform
+
+R: listen-left-street : car-left : * : * -1
+R: listen-left-street : car-mid : * : * -1
+R: listen-left-street : car-right : * : * -1
+
+R: listen-mid-street : car-left : * : * -1
+R: listen-mid-street : car-mid : * : * -1
+R: listen-mid-street : car-right : * : * -1
+
+R: listen-right-street : car-left : * : * -1
+R: listen-right-street : car-mid : * : * -1
+R: listen-right-street : car-right : * : * -1
+
+R: choose-left : car-left : * : * -100
+R: choose-left : car-right : * : * 10
+R: choose-left : car-mid : * : * 10
+
+R: choose-mid : car-mid : * : * -100
+R: choose-mid : car-left : * : * 10
+R: choose-mid : car-right : * : * 10
+
+R: choose-right : car-right : * : * -100
+R: choose-right : car-left : * : * 10 
+R: choose-right : car-mid : * : * 10
+
+R: halt : car-left : * : * 0
+R: halt : car-mid : * : * 0
+R: halt : car-right : * : * 0
+
